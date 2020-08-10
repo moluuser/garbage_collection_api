@@ -1,4 +1,4 @@
-package com.xrb.xrb.controller;
+package com.xrb.xrb.api;
 
 import com.xrb.xrb.entity.Feed;
 import com.xrb.xrb.mapper.FeedMapper;
@@ -10,8 +10,8 @@ import javax.annotation.Resource;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/Feed")
-public class FeedController {
+@RequestMapping("/api/Feed")
+public class FeedAPI {
     @Resource
     FeedMapper feedMapper;
 
