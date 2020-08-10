@@ -7,18 +7,18 @@ import java.util.List;
 
 @Mapper
 public interface OrderMapper {
-    @Select("SELECT * FROM order")
+    @Select("SELECT * FROM `order`")
     List<Order> getOrderList();
 
     @Insert("INSERT INTO `order`(uid, odate, title, price, num, detail, photo, place) VALUE(#{uid}, #{odate}, #{title}, #{price}, #{num}, #{detail}, #{photo}, #{place})")
     Integer addOrder(Order order);
 
-    @Update("UPDATE order SET status = #{status} WHERE oid = #{oid}")
+    @Update("UPDATE `order` SET status = #{status} WHERE oid = #{oid}")
     Integer updStatusById(@Param("oid") Integer oid, @Param("status") String status);
 
-    @Select("SELECT * FROM order WHERE oid = #{oid}")
+    @Select("SELECT * FROM `order` WHERE oid = #{oid}")
     Order getOrderById(Integer oid);
 
-    @Select("SELECT * FROM order WHERE uid = #{uid}")
+    @Select("SELECT * FROM `order` WHERE uid = #{uid}")
     List<Order> getOrderListByUid(Integer uid);
 }
