@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: root
+    password: Wgl}V%QK0B&D5Mr
+    url: jdbc:mysql://39.96.82.182:3306/xrb?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 6100
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
