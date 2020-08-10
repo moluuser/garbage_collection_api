@@ -15,7 +15,7 @@ public class AppAPI {
     AppMapper appMapper;
 
     @GetMapping("/getAppInfo")
-    public App getAppInfo(){
+    public App getAppInfo() {
         return appMapper.getAppInfo();
     }
 }

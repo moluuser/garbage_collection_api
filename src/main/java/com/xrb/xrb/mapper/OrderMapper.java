@@ -1,13 +1,24 @@
 package com.xrb.xrb.mapper;
 
-import com.xrb.xrb.entity.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import com.xrb.xrb.entity.Order;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface OrderMapper {
     @Select("SELECT * FROM order")
-    List<User> getOrderList();
+    List<Order> getOrderList();
+
+    @Insert("INSERT INTO `order`(uid, odate, title, price, num, detail, photo, place) VALUE(#{uid}, #{odate}, #{title}, #{price}, #{num}, #{detail}, #{photo}, #{place})")
+    Integer addOrder(Order order);
+
+    @Update("UPDATE order SET status = #{status} WHERE oid = #{oid}")
+    Integer updStatusById(@Param("oid") Integer oid, @Param("status") String status);
+
+    @Select("SELECT * FROM order WHERE oid = #{oid}")
+    Order getOrderById(Integer oid);
+
+    @Select("SELECT * FROM order WHERE uid = #{uid}")
+    List<Order> getOrderListByUid(Integer uid);
 }
