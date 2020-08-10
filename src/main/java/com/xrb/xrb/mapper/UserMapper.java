@@ -26,14 +26,14 @@ public interface UserMapper {
     Integer addUser(@Param("username") String username, @Param("password") String password);
 
     @Update("UPDATE user SET password = #{password} WHERE uid = #{uid}")
-    Integer updUserPwdById(@Param("uid")Integer uid, @Param("password")String password);
+    Integer updUserPwdById(@Param("uid") Integer uid, @Param("password") String password);
 
     @Update("UPDATE user SET avatar = #{avatar} WHERE uid = #{uid}")
-    Integer updUserAvaById(@Param("uid")Integer uid, @Param("avatar")String avatar);
+    Integer updUserAvaById(@Param("uid") Integer uid, @Param("avatar") String avatar);
 
     @Update("UPDATE user SET tel = #{tel} WHERE uid = #{uid}")
-    Integer updUserTelById(@Param("uid")Integer uid, @Param("tel")String tel);
+    Integer updUserTelById(@Param("uid") Integer uid, @Param("tel") String tel);
 
     @Update("UPDATE user SET score = #{score} WHERE uid = #{uid}")
-    Integer updUserScoreById(@Param("uid")Integer uid, @Param("score")String score);
+    Integer updUserScoreById(@Param("uid") Integer uid, @Param("score") String score);
 }
