@@ -19,4 +19,16 @@ public class UserController {
     public List<User> getUserList() {
         return userMapper.getUserList();
     }
+
+    @GetMapping("/getUserByName")
+    public User getUserByName(String username) {
+        return userMapper.getUserByName(username);
+    }
+
+    @GetMapping("/login")
+    public Integer login(String username, String password) {
+        return userMapper.login(username, password);
+    }
+
+
 }

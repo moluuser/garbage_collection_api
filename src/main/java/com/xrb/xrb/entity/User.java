@@ -12,7 +12,6 @@ public class User {
     private String username;
     private String password;
     private String tel;
-    private String sex;
     private String avatar;
     private Integer score;
 }
