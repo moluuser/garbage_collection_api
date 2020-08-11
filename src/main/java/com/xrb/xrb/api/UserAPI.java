@@ -5,8 +5,13 @@ import com.xrb.xrb.mapper.UserMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sun.misc.BASE64Encoder;
 
 import javax.annotation.Resource;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +20,15 @@ import java.util.List;
 public class UserAPI {
     @Resource
     UserMapper userMapper;
+
+    public String EncoderByMd5(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        //确定计算方法
+        MessageDigest md5 = MessageDigest.getInstance("MD5");
+        BASE64Encoder base64en = new BASE64Encoder();
+        //加密后的字符串
+        String newStr = base64en.encode(md5.digest(str.getBytes(StandardCharsets.UTF_8)));
+        return newStr;
+    }
 
     @GetMapping("/getUserList")
     public List<User> getUserList() {
@@ -32,8 +46,8 @@ public class UserAPI {
     }
 
     @GetMapping("/login")
-    public Integer login(String username, String password) {
-        return userMapper.login(username, password);
+    public Integer login(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return userMapper.login(username, EncoderByMd5(password));
     }
 
     @GetMapping("/getUserScoreById")
@@ -42,18 +56,18 @@ public class UserAPI {
     }
 
     @GetMapping("/addUser")
-    public Integer addUser(String username, String password) {
-        return userMapper.addUser(username, password);
+    public Integer addUser(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return userMapper.addUser(username, EncoderByMd5(password));
     }
 
     @GetMapping("/updUserPwdById")
-    public Integer updUserPwdById(Integer uid, String password) {
-        return userMapper.updUserPwdById(uid, password);
+    public Integer updUserPwdById(Integer uid, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return userMapper.updUserPwdById(uid, EncoderByMd5(password));
     }
 
     @GetMapping("/updUserPwdByName")
-    public Integer updUserPwdByName(String username, String password) {
-        return userMapper.updUserPwdByName(username, password);
+    public Integer updUserPwdByName(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        return userMapper.updUserPwdByName(username, EncoderByMd5(password));
     }
 
     @GetMapping("/updUserAvaById")
