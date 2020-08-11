@@ -50,6 +50,11 @@ public class UserAPI {
         return userMapper.updUserPwdById(uid, password);
     }
 
+    @GetMapping("/updUserPwdByName")
+    public Integer updUserPwdByName(String username, String password) {
+        return userMapper.updUserPwdByName(username, password);
+    }
+
     @GetMapping("/updUserAvaById")
     public Integer updUserAvaById(Integer uid, String avatar) {
         return userMapper.updUserAvaById(uid, avatar);
