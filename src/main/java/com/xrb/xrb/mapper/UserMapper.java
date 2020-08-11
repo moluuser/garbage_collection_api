@@ -3,6 +3,7 @@ package com.xrb.xrb.mapper;
 import com.xrb.xrb.entity.User;
 import org.apache.ibatis.annotations.*;
 
+import java.sql.Date;
 import java.util.List;
 
 @Mapper
@@ -18,6 +19,9 @@ public interface UserMapper {
 
     @Select("SELECT * FROM user WHERE uid=#{uid}")
     User getUserById(Integer uid);
+
+    @Select("SELECT sdate FROM user WHERE uid=#{uid}")
+    Date getUserSdateById(Integer uid);
 
     @Select("SELECT score FROM user WHERE uid=#{uid}")
     User getUserScoreById(Integer uid);
@@ -37,7 +41,7 @@ public interface UserMapper {
     @Update("UPDATE user SET tel = #{tel} WHERE uid = #{uid}")
     Integer updUserTelById(@Param("uid") Integer uid, @Param("tel") String tel);
 
-    @Update("UPDATE user SET score = #{score} WHERE uid = #{uid}")
-    Integer updUserScoreById(@Param("uid") Integer uid, @Param("score") String score);
+    @Update("UPDATE user SET score = score + #{changevar}, sdate = #{sdate} WHERE uid = #{uid}")
+    Integer updUserScoreById(@Param("uid") Integer uid, @Param("changevar") Integer changevar, @Param("sdate") Date sdate);
 
 }

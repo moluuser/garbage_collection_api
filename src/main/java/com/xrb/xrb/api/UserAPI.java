@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -66,7 +67,13 @@ public class UserAPI {
     }
 
     @GetMapping("/updUserScoreById")
-    public Integer updUserScoreById(Integer uid, String score) {
-        return userMapper.updUserScoreById(uid, score);
+    public Integer updUserScoreById(Integer uid, Integer changevar) {
+        Date utilDate = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+//        判断是否为同一天
+        if (Math.abs(sqlDate.getTime() - userMapper.getUserSdateById(uid).getTime()) > 3600000 * 24)
+            return userMapper.updUserScoreById(uid, changevar, sqlDate);
+        else
+            return -1;
     }
 }
