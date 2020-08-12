@@ -45,6 +45,12 @@ public class UserAPI {
         return userMapper.getUserById(uid);
     }
 
+
+    @GetMapping("/getUserTelById")
+    public String getUserTelById(Integer uid) {
+        return userMapper.getUserTelById(uid);
+    }
+
     @GetMapping("/login")
     public Integer login(String username, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         return userMapper.login(username, EncoderByMd5(password));

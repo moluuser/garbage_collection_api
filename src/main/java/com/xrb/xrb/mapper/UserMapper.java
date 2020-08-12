@@ -24,7 +24,10 @@ public interface UserMapper {
     Date getUserSdateById(Integer uid);
 
     @Select("SELECT score FROM user WHERE uid=#{uid}")
-    User getUserScoreById(Integer uid);
+    Integer getUserScoreById(Integer uid);
+
+    @Select("SELECT tel FROM user WHERE uid=#{uid}")
+    String getUserTelById(Integer uid);
 
     @Insert("INSERT INTO user(username, password) VALUE(#{username}, #{password})")
     Integer addUser(@Param("username") String username, @Param("password") String password);
