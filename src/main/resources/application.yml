@@ -4,6 +4,12 @@ spring:
     password: Wgl}V%QK0B&D5Mr
     url: jdbc:mysql://39.96.82.182:3306/xrb?useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 30MB
+  resources:
+    static-locations: classpath:static/,file:static/
 
 server:
   port: 6100
@@ -12,3 +18,5 @@ server:
       charset: UTF-8
       force: true
       enabled: true
+
+
