@@ -14,10 +14,10 @@ public interface OrderMapper {
     Integer addOrder(Order order);
 
     @Update("UPDATE `order` SET status = #{status} WHERE oid = #{oid}")
-    Integer updStatusById(@Param("oid") Integer oid, @Param("status") String status);
+    Integer updStatusById(@Param("oid") String oid, @Param("status") String status);
 
     @Select("SELECT * FROM `order` WHERE oid = #{oid}")
-    Order getOrderById(Integer oid);
+    Order getOrderById(String oid);
 
     @Select("SELECT * FROM `order` WHERE uid = #{uid}")
     List<Order> getOrderListByUid(Integer uid);

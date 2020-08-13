@@ -26,18 +26,18 @@ public class OrderAPI {
     private Integer addOrder(Order order) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         order.setCreatetime(sdf.format(new Date()));
-        order.setOid(String.valueOf(new Date().getTime()) + order.getUid());
+        order.setOid(order.getUid() + String.valueOf(new Date().getTime()));
         order.setStatus("等待上门");
         return orderMapper.addOrder(order);
     }
 
     @GetMapping("/updStatusById")
-    private Integer updStatusById(Integer oid, String status) {
+    private Integer updStatusById(String oid, String status) {
         return orderMapper.updStatusById(oid, status);
     }
 
     @GetMapping("/getOrderById")
-    private Order getOrderById(Integer oid) {
+    private Order getOrderById(String oid) {
         return orderMapper.getOrderById(oid);
     }
 
