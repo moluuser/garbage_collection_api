@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -23,19 +23,11 @@ public class OrderAPI {
     }
 
     @GetMapping("/addOrder")
-    private Integer addOrder(Integer uid, String title, BigDecimal price, Integer num,
-                             String detail, String photo, String place) {
-        Order order = new Order();
-        Date utilDate = new Date();
-        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-        order.setOdate(sqlDate);
-        order.setUid(uid);
-        order.setTitle(title);
-        order.setPrice(price);
-        order.setNum(num);
-        order.setDetail(detail);
-        order.setPhoto(photo);
-        order.setPlace(place);
+    private Integer addOrder(Order order) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        order.setCreatetime(sdf.format(new Date()));
+        order.setOid(String.valueOf(new Date().getTime()) + order.getUid());
+        order.setStatus("等待上门");
         return orderMapper.addOrder(order);
     }
 

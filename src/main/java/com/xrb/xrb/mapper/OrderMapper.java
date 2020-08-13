@@ -10,7 +10,7 @@ public interface OrderMapper {
     @Select("SELECT * FROM `order`")
     List<Order> getOrderList();
 
-    @Insert("INSERT INTO `order`(uid, odate, title, price, num, detail, photo, place) VALUE(#{uid}, #{odate}, #{title}, #{price}, #{num}, #{detail}, #{photo}, #{place})")
+    @Insert("INSERT INTO `order` VALUE(#{oid}, #{uid}, #{status}, #{createtime}, #{contactname}, #{contacttel}, #{homeaddress}, #{detailaddress}, #{goodstype}, #{goodsname}, #{goodsnum}, #{price}, #{hometype}, #{hometime}, #{detail}, #{photo})")
     Integer addOrder(Order order);
 
     @Update("UPDATE `order` SET status = #{status} WHERE oid = #{oid}")

@@ -3,23 +3,27 @@ package com.xrb.xrb.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
+    private String oid;
     private Integer uid;
-    private Integer oid;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date odate;
-    private String title;
+    private String status;
+    private String createtime;
+    private String contactname;
+    private String contacttel;
+    private String homeaddress;
+    private String detailaddress;
+    private String goodstype;
+    private String goodsname;
+    private Integer goodsnum;
     private BigDecimal price;
-    private Integer num;
+    private String hometype;
+    private String hometime;
     private String detail;
     private String photo;
-    private String place;
 }
