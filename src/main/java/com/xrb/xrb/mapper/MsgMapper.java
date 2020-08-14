@@ -1,7 +1,6 @@
 package com.xrb.xrb.mapper;
 
 import com.xrb.xrb.entity.Msg;
-import com.xrb.xrb.entity.Scorelog;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

@@ -11,19 +11,17 @@ import java.io.InputStream;
 public class FileHandleUtil {
 
     /**
-     * 绝对路径
-     **/
-    private static String absolutePath = "";
-
-    /**
      * 静态目录
      **/
     private static final String staticDir = "static";
-
     /**
      * 文件存放的目录
      **/
     private static final String fileDir = "/upload/";
+    /**
+     * 绝对路径
+     **/
+    private static String absolutePath = "";
 
     /**
      * 上传单个文件
