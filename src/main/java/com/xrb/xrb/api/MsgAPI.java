@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -23,6 +25,9 @@ public class MsgAPI {
 
     @GetMapping("/addMsg")
     Integer addMsg(Msg msg) {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        msg.setCreatetime(sdf.format(date));
         return msgMapper.addMsg(msg);
     }
 
