@@ -18,12 +18,12 @@ public class FileHandleUtil {
     /**
      * 静态目录
      **/
-    private static String staticDir = "static";
+    private static final String staticDir = "static";
 
     /**
      * 文件存放的目录
      **/
-    private static String fileDir = "/upload/";
+    private static final String fileDir = "/upload/";
 
     /**
      * 上传单个文件

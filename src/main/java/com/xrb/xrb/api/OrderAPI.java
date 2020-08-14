@@ -24,9 +24,10 @@ public class OrderAPI {
 
     @GetMapping("/addOrder")
     private Integer addOrder(Order order) {
+        Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        order.setCreatetime(sdf.format(new Date()));
-        order.setOid(order.getUid() + String.valueOf(new Date().getTime()));
+        order.setCreatetime(sdf.format(date));
+        order.setOid(order.getUid() + String.valueOf(date.getTime()));
         order.setStatus("等待上门");
         return orderMapper.addOrder(order);
     }

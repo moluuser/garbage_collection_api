@@ -57,8 +57,8 @@ public class UserAPI {
     }
 
     @GetMapping("/getUserScoreById")
-    public User getUserScoreById(Integer uid) {
-        return userMapper.getUserById(uid);
+    public Integer getUserScoreById(Integer uid) {
+        return userMapper.getUserScoreById(uid);
     }
 
     @GetMapping("/addUser")
@@ -95,5 +95,10 @@ public class UserAPI {
             return userMapper.updUserScoreById(uid, changevar, sqlDate);
         else
             return -1;
+    }
+
+    @GetMapping("/updUserScore")
+    public Integer updUserScore(Integer uid, Integer changevar) {
+        return userMapper.updUserScore(uid, changevar);
     }
 }

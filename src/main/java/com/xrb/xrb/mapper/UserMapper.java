@@ -47,4 +47,7 @@ public interface UserMapper {
     @Update("UPDATE user SET score = score + #{changevar}, sdate = #{sdate} WHERE uid = #{uid}")
     Integer updUserScoreById(@Param("uid") Integer uid, @Param("changevar") Integer changevar, @Param("sdate") Date sdate);
 
+    @Update("UPDATE user SET score = score + #{changevar} WHERE uid = #{uid}")
+    Integer updUserScore(@Param("uid") Integer uid, @Param("changevar") Integer changevar);
+
 }
