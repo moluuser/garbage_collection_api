@@ -1,7 +1,6 @@
 package com.xrb.xrb.api;
 
 import com.xrb.xrb.entity.Msg;
-import com.xrb.xrb.entity.Scorelog;
 import com.xrb.xrb.mapper.MsgMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,7 @@ public class MsgAPI {
     MsgMapper msgMapper;
 
     @GetMapping("/getMsgByUid")
-    List<Scorelog> getMsgByUid(Integer uid) {
+    List<Msg> getMsgByUid(Integer uid) {
         return msgMapper.getMsgByUid(uid);
     }
 

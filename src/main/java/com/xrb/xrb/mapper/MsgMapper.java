@@ -11,8 +11,8 @@ import java.util.List;
 
 @Mapper
 public interface MsgMapper {
-    @Select("SELECT * FROM msg WHERE uid = #{uid}")
-    List<Scorelog> getMsgByUid(Integer uid);
+    @Select("SELECT * FROM `msg` WHERE uid = #{uid}")
+    List<Msg> getMsgByUid(Integer uid);
 
     @Insert("INSERT INTO `msg`(uid, title, content, createtime) VALUE(#{uid}, #{title}, #{content}, #{createtime})")
     Integer addMsg(Msg msg);
